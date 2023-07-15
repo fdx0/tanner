@@ -21,9 +21,10 @@ RUN apk -U --no-cache add \
     cd /opt/tanner/ && \
     python3 -m venv tanner-env && \
     source /opt/tanner/tanner-env/bin/activate && \
-    pip install --upgrade pip && \
+    pip3 install --upgrade pip && \
     pip3 install --no-cache-dir wheel && \
     pip3 install --no-cache-dir -r requirements.txt && \
+    pip3 install aiohttp_jinja2==1.5.1 && \
     python3 setup.py install && \
     cd / && \
 # Setup configs, user, groups

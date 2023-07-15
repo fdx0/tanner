@@ -2,6 +2,12 @@ version: '2.3'
 
 networks:
   tanner_local:
+    name: tanner
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.5.0/24"
+          gateway: "192.168.5.1"
 
 services:
 
@@ -14,6 +20,9 @@ services:
     tty: true
     networks:
      - tanner_local
+    dns:
+     - 8.8.8.8
+     - 4.4.4.4
     image: "mushorg/redis:latest"
     read_only: true
 
@@ -26,6 +35,9 @@ services:
     tty: true
     networks:
      - tanner_local
+    dns:
+     - 8.8.8.8
+     - 4.4.4.4
     image: "mushorg/phpox:latest"
     read_only: true
     tmpfs: "/tmp"
@@ -44,6 +56,9 @@ services:
     tty: true
     networks:
      - tanner_local
+    dns:
+     - 8.8.8.8
+     - 4.4.4.4
     image: "mushorg/tanner:latest"
     read_only: true
     command: tannerapi
@@ -64,6 +79,9 @@ services:
     tty: true
     networks:
      - tanner_local
+    dns:
+     - 8.8.8.8
+     - 4.4.4.4
     ports:
      - "8091:8091"
     image: "mushorg/tanner:latest"
@@ -87,6 +105,9 @@ services:
     tty: true
     networks:
      - tanner_local
+    dns:
+     - 8.8.8.8
+     - 4.4.4.4
     ports:
      - "8090:8090"
     image: "mushorg/tanner:latest"
